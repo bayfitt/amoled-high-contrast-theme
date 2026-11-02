@@ -32,13 +32,24 @@ class ThemeTests(unittest.TestCase):
         self.assertGreaterEqual(contrast(PALETTE["accent_cyan"], PALETTE["selection_background"]), 3)
         self.assertGreaterEqual(contrast(PALETTE["accent_cyan"], PALETTE["background"]), 3)
 
-    def test_flow_themes_are_xml_with_cyan_selection_text(self):
+    def test_flow_themes_are_xml_with_white_selection_text(self):
         for path in (ROOT / "adapters" / "flow-launcher").glob("*.xaml"):
             text = path.read_text(encoding="utf-8")
             ET.fromstring(text)
             self.assertIn(f'Property="SelectionTextBrush" Value="{PALETTE["selection_text"]}"', text)
             self.assertIn(f'Property="SelectionBrush" Value="{PALETTE["selection_background"]}"', text)
             self.assertNotIn("{{", text)
+
+    def test_full_screen_has_no_intentional_margin(self):
+        path = ROOT / "adapters" / "flow-launcher" / "AMOLED-HighContrast-FullScreen.xaml"
+        root = ET.fromstring(path.read_text(encoding="utf-8"))
+        wpf = "{http://schemas.microsoft.com/winfx/2006/xaml/presentation}"
+        key = "{http://schemas.microsoft.com/winfx/2006/xaml}Key"
+        style = next(element for element in root.findall(wpf + "Style") if element.get(key) == "WindowBorderStyle")
+        self.assertTrue(any(s.get("Property") == "CornerRadius" and s.get("Value") == "0" for s in style))
+        binding = style.find(".//" + wpf + "Binding")
+        self.assertIsNotNone(binding)
+        self.assertEqual(binding.get("ConverterParameter"), "1")
 
     def test_codex_selection_and_text(self):
         css = (ROOT / "adapters" / "codex-monitor" / "themes.amoled.css").read_text(encoding="utf-8")

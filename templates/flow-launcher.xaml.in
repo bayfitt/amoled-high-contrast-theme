@@ -60,7 +60,7 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{{accent_cyan}}" />
         <Setter Property="Background" Value="{{background}}" />
-{{flow_height_setter}}        <Setter Property="CornerRadius" Value="8" />
+{{flow_height_setter}}        <Setter Property="CornerRadius" Value="{{flow_corner_radius}}" />
         <Setter Property="UseLayoutRounding" Value="True" />
     </Style>
     <Style

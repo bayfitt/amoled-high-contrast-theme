@@ -24,6 +24,7 @@ def flow_theme(full_height):
     values = dict(PALETTE)
     values["background_argb"] = "#FF" + values["background"][1:]
     values["flow_name"] = "AMOLED High Contrast Full Screen" if full_height else "AMOLED High Contrast"
+    values["flow_corner_radius"] = "0" if full_height else "8"
     values["flow_converter"] = (
         '    <converters:SizeRatioConverter x:Key="WorkAreaHeightRatio" />\n'
         if full_height else ""
@@ -32,7 +33,7 @@ def flow_theme(full_height):
         '        <Setter Property="MinHeight">\n'
         '            <Setter.Value>\n'
         '                <Binding Path="Height" Source="{x:Static SystemParameters.WorkArea}"\n'
-        '                         Converter="{StaticResource WorkAreaHeightRatio}" ConverterParameter="0.975" />\n'
+        '                         Converter="{StaticResource WorkAreaHeightRatio}" ConverterParameter="1" />\n'
         '            </Setter.Value>\n'
         '        </Setter>\n'
         if full_height else ""

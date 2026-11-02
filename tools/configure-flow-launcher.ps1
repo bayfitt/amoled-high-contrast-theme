@@ -41,12 +41,14 @@ $settings['ColorScheme'] = [System.Text.Json.Nodes.JsonValue]::Create('Dark')
 if ($Layout -eq 'FullScreen') {
     Add-Type -AssemblyName PresentationFramework
     $area = [System.Windows.SystemParameters]::WorkArea
-    $width = [Math]::Max(400, [Math]::Floor($area.Width - 20))
+    $width = [Math]::Max(400, [Math]::Floor($area.Width))
     $itemHeight = if ($null -ne $settings['ItemHeightSize']) { [double]$settings['ItemHeightSize'].ToString() } else { 58 }
     if ($itemHeight -le 0) { throw 'The configured result item height is invalid.' }
-    $maxResults = [Math]::Clamp([int][Math]::Floor(($area.Height * 0.975 - 60) / $itemHeight), 2, 17)
+    $maxResults = [Math]::Clamp([int][Math]::Floor(($area.Height - 60) / $itemHeight), 2, 17)
     $settings['WindowSize'] = [System.Text.Json.Nodes.JsonValue]::Create([double]$width)
-    $settings['SearchWindowAlign'] = [System.Text.Json.Nodes.JsonValue]::Create('CenterTop')
+    $settings['SearchWindowAlign'] = [System.Text.Json.Nodes.JsonValue]::Create('Custom')
+    $settings['CustomWindowLeft'] = [System.Text.Json.Nodes.JsonValue]::Create([double]0)
+    $settings['CustomWindowTop'] = [System.Text.Json.Nodes.JsonValue]::Create([double]0)
     $settings['UseDropShadowEffect'] = [System.Text.Json.Nodes.JsonValue]::Create($false)
     $settings['MaxResultsToShow'] = [System.Text.Json.Nodes.JsonValue]::Create($maxResults)
 }

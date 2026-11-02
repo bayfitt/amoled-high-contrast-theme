@@ -64,10 +64,10 @@
         <Setter Property="MinHeight">
             <Setter.Value>
                 <Binding Path="Height" Source="{x:Static SystemParameters.WorkArea}"
-                         Converter="{StaticResource WorkAreaHeightRatio}" ConverterParameter="0.975" />
+                         Converter="{StaticResource WorkAreaHeightRatio}" ConverterParameter="1" />
             </Setter.Value>
         </Setter>
-        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="CornerRadius" Value="0" />
         <Setter Property="UseLayoutRounding" Value="True" />
     </Style>
     <Style
