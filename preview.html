@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" data-theme="amoled-high-contrast">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AMOLED High Contrast preview</title>
+  <link rel="stylesheet" href="adapters/css/amoled-high-contrast.css">
+  <style>
+    body { font: 17px/1.5 system-ui, sans-serif; max-width: 48rem; margin: 3rem auto; padding: 0 1rem; }
+    h1 { font-size: 2rem; }
+    .row { border: 1px solid var(--amoled-accent-cyan); padding: 1rem; margin: .6rem 0; border-radius: .5rem; }
+    .selected { background: var(--amoled-selection); color: var(--amoled-selection-text); }
+    input { background: #000; color: var(--amoled-text); border: 1px solid var(--amoled-accent-cyan); padding: .7rem; width: min(100%, 30rem); }
+  </style>
+</head>
+<body>
+  <h1>AMOLED High Contrast</h1>
+  <p>Text stays white on both black and royal purple. Select this sentence to try it.</p>
+  <div class="row">Normal row: white text on black</div>
+  <div class="row selected">Selected row: white text on royal purple</div>
+  <label for="sample">Text selection:</label>
+  <input id="sample" value="Select this text to check the purple highlight">
+</body>
+</html>

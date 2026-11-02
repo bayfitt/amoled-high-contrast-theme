@@ -1,0 +1,22 @@
+/* AMOLED High Contrast: import this file and add data-theme="amoled-high-contrast" to the root. */
+[data-theme="amoled-high-contrast"] {
+  color-scheme: dark;
+  --amoled-background: #000000;
+  --amoled-text: #FFFFFF;
+  --amoled-selection: #512DA8;
+  --amoled-selection-text: #FFFFFF;
+  --amoled-accent-cyan: #00EAFF;
+  --amoled-accent-purple: #967CFF;
+  background-color: var(--amoled-background);
+  color: var(--amoled-text);
+}
+[data-theme="amoled-high-contrast"] ::selection {
+  background: var(--amoled-selection);
+  color: var(--amoled-selection-text);
+}
+[data-theme="amoled-high-contrast"] :is(.is-selected, [aria-selected="true"]) {
+  background-color: var(--amoled-selection);
+  color: var(--amoled-selection-text);
+  outline: 2px solid var(--amoled-accent-cyan);
+  outline-offset: -2px;
+}

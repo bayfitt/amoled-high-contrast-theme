@@ -1,0 +1,265 @@
+:root[data-theme="amoled"] {
+  color-scheme: dark;
+  /* Preserve the chosen palette when Windows uses a contrast theme. */
+  forced-color-adjust: none;
+}
+
+/* Black canvas, with saturated colors at low lightness for raised surfaces. */
+:root[data-theme="amoled"],
+:root[data-theme="amoled"] .app {
+  --text-primary: hsl(185 100% 88%);
+  --text-strong: hsl(55 100% 78%);
+  --text-emphasis: hsl(315 100% 83%);
+  --text-stronger: hsl(185 100% 84%);
+  --text-quiet: hsl(140 100% 76%);
+  --text-muted: hsl(185 100% 75%);
+  --text-subtle: hsl(285 100% 82%);
+  --text-faint: hsl(55 100% 70%);
+  --text-fainter: hsl(195 100% 72%);
+  --text-dim: hsl(310 100% 73%);
+  --surface-sidebar: #000000;
+  --surface-sidebar-opaque: #000000;
+  --surface-topbar: #000000;
+  --surface-right-panel: #000000;
+  --surface-composer: #000000;
+  --surface-messages: #000000;
+  --surface-card: hsl(230 100% 8%);
+  --surface-card-strong: hsl(275 100% 13%);
+  --surface-card-muted: hsl(195 100% 7%);
+  --surface-item: hsl(300 100% 7%);
+  --surface-control: hsl(235 100% 14%);
+  --surface-control-hover: hsl(265 100% 21%);
+  --surface-control-disabled: hsl(220 100% 9%);
+  --surface-hover: hsl(195 100% 11%);
+  --surface-active: hsl(285 100% 15%);
+  --surface-approval: hsl(55 100% 9%);
+  --surface-debug: hsl(240 100% 7%);
+  --surface-command: hsl(220 100% 8%);
+  --surface-diff-card: hsl(250 100% 7%);
+  --surface-bubble: hsl(220 100% 9%);
+  --surface-bubble-user: hsl(285 100% 15%);
+  --surface-context-core: hsl(230 100% 7%);
+  --surface-popover: hsl(245 100% 9%);
+  --surface-review: hsl(315 100% 11%);
+  --border-review: hsl(315 100% 45%);
+  --surface-review-active: hsl(315 100% 18%);
+  --text-review-active: hsl(55 100% 80%);
+  --surface-review-done: hsl(140 100% 10%);
+  --text-review-done: hsl(140 100% 75%);
+  --border-subtle: hsl(200 100% 25%);
+  --border-muted: hsl(265 100% 24%);
+  --border-strong: hsl(315 100% 37%);
+  --border-stronger: hsl(285 100% 45%);
+  --border-quiet: hsl(185 100% 30%);
+  --border-accent: hsl(185 100% 50%);
+  --border-accent-soft: hsl(300 100% 40%);
+  --text-accent: hsl(185 100% 65%);
+  --message-link-color: hsl(310 100% 78%);
+  --shadow-accent: hsl(300 100% 30% / 35%);
+  --status-success: hsl(120 100% 50%);
+  --status-warning: hsl(50 100% 50%);
+  --status-error: hsl(0 100% 60%);
+  --status-unknown: hsl(195 100% 60%);
+  --select-caret: hsl(55 100% 65%);
+}
+
+:root[data-theme="amoled"] .app {
+  background: #000000;
+}
+
+/* Replace upstream gray and translucent white chrome in the main views. */
+:root[data-theme="amoled"] :is(input, textarea)::placeholder {
+  color: hsl(185 100% 68%);
+  opacity: 1;
+}
+
+:root[data-theme="amoled"] ::selection {
+  background: hsl(300 100% 30%);
+  color: hsl(55 100% 90%);
+}
+
+:root[data-theme="amoled"] .primary {
+  background: linear-gradient(135deg, hsl(315 100% 38%), hsl(315 100% 25%));
+  color: hsl(55 100% 88%);
+}
+
+:root[data-theme="amoled"] :is(button, input, textarea, select):disabled {
+  color: hsl(285 100% 75%);
+  opacity: 1;
+}
+
+:root[data-theme="amoled"] :is(.home-title, .workspace-name, .sidebar-usage-value) {
+  color: hsl(55 100% 75%);
+}
+
+:root[data-theme="amoled"] :is(.home-section-title, .sidebar-usage-kicker, .thread-name) {
+  color: hsl(315 100% 78%);
+}
+
+:root[data-theme="amoled"] :is(.home-usage-label, .workspace-summary, .thread-time, .sidebar-usage-reset) {
+  color: hsl(185 100% 72%);
+}
+
+:root[data-theme="amoled"] :is(.home-latest-card, .home-usage-card) {
+  background: linear-gradient(135deg, hsl(210 100% 14%), hsl(210 100% 6%));
+}
+
+:root[data-theme="amoled"] .home-usage-card:nth-child(4n + 2) {
+  background: linear-gradient(135deg, hsl(285 100% 16%), hsl(285 100% 7%));
+}
+
+:root[data-theme="amoled"] .home-usage-card:nth-child(4n + 3) {
+  background: linear-gradient(135deg, hsl(145 100% 12%), hsl(145 100% 5%));
+}
+
+:root[data-theme="amoled"] .home-usage-card:nth-child(4n + 4) {
+  background: linear-gradient(135deg, hsl(35 100% 13%), hsl(35 100% 5%));
+}
+
+:root[data-theme="amoled"] :is(.home-usage-chart-button, .home-usage-model-chip, .home-usage-empty, .worktree-info-code, .diff-view-toggle-button.is-active) {
+  background: hsl(240 100% 10%);
+}
+
+:root[data-theme="amoled"] :is(.thread-skeleton, .home-latest-skeleton) {
+  background-image: linear-gradient(110deg, hsl(280 100% 10%) 8%, hsl(280 100% 30%) 18%, hsl(280 100% 10%) 33%);
+}
+
+/* The remote-connection dialogs use their own colors upstream. */
+:root[data-theme="amoled"] :is(.settings-add-remote-card, .settings-delete-remote-card) {
+  background: hsl(245 100% 9%);
+  border-color: hsl(300 100% 35%);
+  color: hsl(185 100% 85%);
+}
+
+:root[data-theme="amoled"] :is(.settings-add-remote-title, .settings-delete-remote-title) {
+  color: hsl(55 100% 78%);
+}
+
+:root[data-theme="amoled"] :is(.settings-add-remote-close, .settings-delete-remote-message, .settings-add-remote-card .settings-field-label, .settings-add-remote-card .settings-help) {
+  color: hsl(185 100% 75%);
+}
+
+:root[data-theme="amoled"] .settings-add-remote-card .settings-help-error {
+  color: hsl(0 100% 75%);
+}
+
+:root[data-theme="amoled"] .settings-add-remote-card .settings-input {
+  background: hsl(230 100% 12%);
+  border-color: hsl(185 100% 35%);
+  color: hsl(185 100% 88%);
+}
+
+:root[data-theme="amoled"] :is(.settings-add-remote-card, .settings-delete-remote-card) .ghost {
+  background: hsl(280 100% 12%);
+  border-color: hsl(300 100% 40%);
+  color: hsl(55 100% 78%);
+}
+
+/* File previews and diffs keep distinct syntax colors without gray tokens. */
+:root[data-theme="amoled"] :is(.file-preview-line-text, .diff-line-content) .token:is(.comment, .prolog, .doctype, .cdata) {
+  color: hsl(145 100% 72%);
+}
+
+:root[data-theme="amoled"] :is(.file-preview-line-text, .diff-line-content) .token:is(.punctuation, .operator, .entity, .url, .variable) {
+  color: hsl(55 100% 78%);
+}
+
+:root[data-theme="amoled"] :is(.file-preview-line-text, .diff-line-content) .token:is(.property, .tag, .constant, .symbol, .deleted) {
+  color: hsl(0 100% 76%);
+}
+
+:root[data-theme="amoled"] :is(.file-preview-line-text, .diff-line-content) .token:is(.boolean, .number) {
+  color: hsl(35 100% 68%);
+}
+
+:root[data-theme="amoled"] :is(.file-preview-line-text, .diff-line-content) .token:is(.selector, .attr-name, .string, .char, .builtin, .inserted) {
+  color: hsl(120 100% 73%);
+}
+
+:root[data-theme="amoled"] :is(.file-preview-line-text, .diff-line-content) .token:is(.atrule, .attr-value, .keyword) {
+  color: hsl(290 100% 78%);
+}
+
+:root[data-theme="amoled"] :is(.file-preview-line-text, .diff-line-content) .token:is(.function, .class-name) {
+  color: hsl(190 100% 74%);
+}
+
+:root[data-theme="amoled"] :is(.plan-ready-followup-change, .window-caption-control-close:hover, .window-caption-control-close:focus-visible) {
+  background: hsl(300 100% 13%);
+  color: hsl(55 100% 85%);
+}
+
+:root[data-theme="amoled"] :is(.plan-step.inProgress .plan-step-status, .debug-source.stderr) {
+  color: hsl(50 100% 72%);
+}
+
+:root[data-theme="amoled"] :is(.plan-step.completed .plan-step-status, .diff-viewer-pr-jump-add, .per-file-edit-stat-add) {
+  color: hsl(120 100% 65%);
+}
+
+:root[data-theme="amoled"] :is(.debug-source.error, .diff-viewer-pr-jump-del, .per-file-edit-stat-del, .diff-error) {
+  color: hsl(0 100% 75%);
+}
+
+:root[data-theme="amoled"] :is(.diff-viewer-status[data-status="A"], .per-file-edit-status[data-status="A"], .diff-icon-added) {
+  color: hsl(120 100% 65%);
+  border-color: hsl(120 100% 30%);
+  background: hsl(120 100% 8%);
+}
+
+:root[data-theme="amoled"] :is(.diff-viewer-status[data-status="M"], .per-file-edit-status[data-status="R"], .diff-icon-modified) {
+  color: hsl(50 100% 68%);
+  border-color: hsl(50 100% 30%);
+  background: hsl(50 100% 8%);
+}
+
+:root[data-theme="amoled"] :is(.diff-viewer-status[data-status="D"], .per-file-edit-status[data-status="D"], .diff-icon-deleted) {
+  color: hsl(0 100% 75%);
+  border-color: hsl(0 100% 35%);
+  background: hsl(0 100% 9%);
+}
+
+:root[data-theme="amoled"] .workspace-row:hover::before {
+  background: hsl(195 100% 14%);
+}
+
+:root[data-theme="amoled"] .workspace-row::before,
+:root[data-theme="amoled"] .thread-row,
+:root[data-theme="amoled"] .thread-row::before {
+  box-shadow: none;
+}
+
+:root[data-theme="amoled"] :is(.message.user, .message.assistant) .bubble {
+  box-shadow: inset 0 1px 0 hsl(210 100% 22%);
+}
+
+:root[data-theme="amoled"] .thread-row:hover {
+  background: hsl(280 100% 15%);
+}
+
+:root[data-theme="amoled"] .thread-status.processing { background: hsl(30 100% 50%); }
+:root[data-theme="amoled"] .thread-status.reviewing { background: hsl(180 100% 50%); }
+:root[data-theme="amoled"] .thread-status.unread { background: hsl(220 100% 60%); }
+:root[data-theme="amoled"] .thread-status.ready { background: hsl(120 100% 50%); }
+
+:root[data-theme="amoled"] .thread-state-chip.processing { color: hsl(30 100% 75%); background: hsl(30 100% 10%); border-color: hsl(30 100% 35%); }
+:root[data-theme="amoled"] .thread-state-chip.reviewing { color: hsl(180 100% 75%); background: hsl(180 100% 10%); border-color: hsl(180 100% 35%); }
+:root[data-theme="amoled"] .thread-state-chip.unread { color: hsl(220 100% 80%); background: hsl(220 100% 12%); border-color: hsl(220 100% 40%); }
+:root[data-theme="amoled"] .thread-state-chip.ready { color: hsl(120 100% 75%); background: hsl(120 100% 8%); border-color: hsl(120 100% 30%); }
+
+:root[data-theme="amoled"] .working-text {
+  background-image: linear-gradient(90deg, hsl(185 100% 45%), hsl(185 100% 85%), hsl(185 100% 45%));
+}
+
+/* Keep secondary toolbar glyphs colorful too, without changing their layout. */
+:root[data-theme="amoled"] :is(.main-header, .composer, .git-panel) button:not(.composer-action):not(.composer-attach):not(.main-header-action) > svg {
+  color: hsl(185 100% 65%);
+}
+
+:root[data-theme="amoled"] :is(.main-header, .composer, .git-panel) button:not(.composer-action):not(.composer-attach):not(.main-header-action):nth-of-type(3n + 2) > svg {
+  color: hsl(315 100% 72%);
+}
+
+:root[data-theme="amoled"] :is(.main-header, .composer, .git-panel) button:not(.composer-action):not(.composer-attach):not(.main-header-action):nth-of-type(3n) > svg {
+  color: hsl(55 100% 65%);
+}

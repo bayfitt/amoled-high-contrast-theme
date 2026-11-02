@@ -1,0 +1,5 @@
+{
+  "configProperties": {
+    "Switch.System.Windows.Controls.Text.UseAdornerForTextboxSelectionRendering": false
+  }
+}
