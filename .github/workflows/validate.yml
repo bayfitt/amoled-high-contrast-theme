@@ -1,0 +1,21 @@
+name: Validate theme
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check generated adapters
+        run: python tools/generate.py --check
+      - name: Check contrast and theme files
+        run: python tools/test_theme.py
+      - name: Check Flow Launcher configuration
+        shell: pwsh
+        run: ./tools/test-flow-configuration.ps1

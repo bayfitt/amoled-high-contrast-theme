@@ -48,7 +48,7 @@ To use it in a Codex Monitor source build, back up the existing `src/styles/them
 
 1. Edit [palette.json](palette.json).
 2. Run `python tools/generate.py` to regenerate every adapter.
-3. Run `python tools/test_theme.py` and `python tools/generate.py --check`.
+3. Run `python tools/test_theme.py` and `python tools/generate.py --check`. On Windows, run `pwsh -File tools/test-flow-configuration.ps1` as well.
 4. Reapply or rebuild the adapters used by each application.
 
 The automated checks cover text/selection contrast, generated-file consistency, and XML syntax. They do not replace a visual check in each application.
