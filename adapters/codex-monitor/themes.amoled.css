@@ -26,7 +26,7 @@
   --surface-card: hsl(230 100% 8%);
   --surface-card-strong: hsl(275 100% 13%);
   --surface-card-muted: hsl(195 100% 7%);
-  --surface-item: hsl(300 100% 7%);
+  --surface-item: hsl(260 100% 7%);
   --surface-control: hsl(235 100% 14%);
   --surface-control-hover: hsl(265 100% 21%);
   --surface-control-disabled: hsl(220 100% 9%);
@@ -37,25 +37,25 @@
   --surface-command: hsl(220 100% 8%);
   --surface-diff-card: hsl(250 100% 7%);
   --surface-bubble: hsl(220 100% 9%);
-  --surface-bubble-user: hsl(285 100% 15%);
+  --surface-bubble-user: hsl(260 100% 15%);
   --surface-context-core: hsl(230 100% 7%);
   --surface-popover: hsl(245 100% 9%);
-  --surface-review: hsl(315 100% 11%);
-  --border-review: hsl(315 100% 45%);
-  --surface-review-active: hsl(315 100% 18%);
+  --surface-review: hsl(260 100% 11%);
+  --border-review: hsl(260 100% 45%);
+  --surface-review-active: hsl(260 100% 18%);
   --text-review-active: #FFFFFF;
   --surface-review-done: hsl(140 100% 10%);
   --text-review-done: #FFFFFF;
   --border-subtle: hsl(200 100% 25%);
   --border-muted: hsl(265 100% 24%);
-  --border-strong: hsl(315 100% 37%);
-  --border-stronger: hsl(285 100% 45%);
+  --border-strong: hsl(260 100% 37%);
+  --border-stronger: hsl(260 100% 45%);
   --border-quiet: hsl(185 100% 30%);
   --border-accent: hsl(185 100% 50%);
-  --border-accent-soft: hsl(300 100% 40%);
+  --border-accent-soft: hsl(260 100% 40%);
   --text-accent: #FFFFFF;
   --message-link-color: #FFFFFF;
-  --shadow-accent: hsl(300 100% 30% / 35%);
+  --shadow-accent: hsl(260 100% 30% / 35%);
   --status-success: hsl(120 100% 50%);
   --status-warning: hsl(50 100% 50%);
   --status-error: hsl(0 100% 60%);
@@ -79,7 +79,7 @@
 }
 
 :root[data-theme="amoled"] .primary {
-  background: linear-gradient(135deg, hsl(315 100% 38%), hsl(315 100% 25%));
+  background: linear-gradient(135deg, hsl(260 100% 38%), hsl(260 100% 25%));
   color: #FFFFFF;
 }
 
@@ -105,7 +105,7 @@
 }
 
 :root[data-theme="amoled"] .home-usage-card:nth-child(4n + 2) {
-  background: linear-gradient(135deg, hsl(285 100% 16%), hsl(285 100% 7%));
+  background: linear-gradient(135deg, hsl(260 100% 16%), hsl(260 100% 7%));
 }
 
 :root[data-theme="amoled"] .home-usage-card:nth-child(4n + 3) {
@@ -121,13 +121,13 @@
 }
 
 :root[data-theme="amoled"] :is(.thread-skeleton, .home-latest-skeleton) {
-  background-image: linear-gradient(110deg, hsl(280 100% 10%) 8%, hsl(280 100% 30%) 18%, hsl(280 100% 10%) 33%);
+  background-image: linear-gradient(110deg, hsl(260 100% 10%) 8%, hsl(260 100% 30%) 18%, hsl(260 100% 10%) 33%);
 }
 
 /* The remote-connection dialogs use their own colors upstream. */
 :root[data-theme="amoled"] :is(.settings-add-remote-card, .settings-delete-remote-card) {
   background: hsl(245 100% 9%);
-  border-color: hsl(300 100% 35%);
+  border-color: hsl(260 100% 35%);
   color: #FFFFFF;
 }
 
@@ -150,8 +150,8 @@
 }
 
 :root[data-theme="amoled"] :is(.settings-add-remote-card, .settings-delete-remote-card) .ghost {
-  background: hsl(280 100% 12%);
-  border-color: hsl(300 100% 40%);
+  background: hsl(260 100% 12%);
+  border-color: hsl(260 100% 40%);
   color: #FFFFFF;
 }
 
@@ -185,7 +185,7 @@
 }
 
 :root[data-theme="amoled"] :is(.plan-ready-followup-change, .window-caption-control-close:hover, .window-caption-control-close:focus-visible) {
-  background: hsl(300 100% 13%);
+  background: hsl(260 100% 13%);
   color: #FFFFFF;
 }
 
@@ -234,7 +234,7 @@
 }
 
 :root[data-theme="amoled"] .thread-row:hover {
-  background: hsl(280 100% 15%);
+  background: hsl(260 100% 15%);
 }
 
 :root[data-theme="amoled"] .thread-status.processing { background: hsl(30 100% 50%); }

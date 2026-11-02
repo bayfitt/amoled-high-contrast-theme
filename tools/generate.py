@@ -50,6 +50,8 @@ def codex_monitor_theme():
     text = re.sub(r"(?m)^(\s*--message-link-color:\s*)[^;]+;", lambda m: m.group(1) + cyan + ";", text)
     text = re.sub(r"(?m)^(\s*--surface-active:\s*)[^;]+;", lambda m: m.group(1) + selection + ";", text)
     text = re.sub(r"(?m)^(\s*(?:color|caret-color):\s*)[^;]+;", lambda m: m.group(1) + cyan + ";", text)
+    # Shift the former magenta/violet surfaces to the same royal-purple family.
+    text = re.sub(r"hsl\((?:2[89]\d|3[01]\d)(?=\s)", "hsl(260", text, flags=re.IGNORECASE)
     pattern = r'(:root\[data-theme="amoled"\] ::selection\s*\{)(.*?)(\})'
     text, count = re.subn(pattern, lambda m: m.group(1) + f"\n  background: {selection};\n  color: {selection_text};\n" + m.group(3), text, count=1, flags=re.DOTALL)
     if count != 1:
