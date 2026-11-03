@@ -23,39 +23,39 @@
   --surface-right-panel: #000000;
   --surface-composer: #000000;
   --surface-messages: #000000;
-  --surface-card: hsl(230 100% 8%);
-  --surface-card-strong: hsl(275 100% 13%);
+  --surface-card: #001C3D;
+  --surface-card-strong: #200040;
   --surface-card-muted: hsl(195 100% 7%);
-  --surface-item: hsl(260 100% 7%);
-  --surface-control: hsl(235 100% 14%);
-  --surface-control-hover: hsl(265 100% 21%);
-  --surface-control-disabled: hsl(220 100% 9%);
+  --surface-item: #200040;
+  --surface-control: #001C3D;
+  --surface-control-hover: #001C3D;
+  --surface-control-disabled: #001C3D;
   --surface-hover: hsl(195 100% 11%);
-  --surface-active: #4C00A8;
+  --surface-active: #200040;
   --surface-approval: hsl(55 100% 9%);
-  --surface-debug: hsl(240 100% 7%);
-  --surface-command: hsl(220 100% 8%);
-  --surface-diff-card: hsl(250 100% 7%);
-  --surface-bubble: hsl(220 100% 9%);
-  --surface-bubble-user: hsl(260 100% 15%);
-  --surface-context-core: hsl(230 100% 7%);
-  --surface-popover: hsl(245 100% 9%);
-  --surface-review: hsl(260 100% 11%);
-  --border-review: hsl(260 100% 45%);
-  --surface-review-active: hsl(260 100% 18%);
+  --surface-debug: #001C3D;
+  --surface-command: #001C3D;
+  --surface-diff-card: #001C3D;
+  --surface-bubble: #001C3D;
+  --surface-bubble-user: #200040;
+  --surface-context-core: #001C3D;
+  --surface-popover: #001C3D;
+  --surface-review: #200040;
+  --border-review: #FFAA33;
+  --surface-review-active: #200040;
   --text-review-active: #FFFFFF;
   --surface-review-done: hsl(140 100% 10%);
   --text-review-done: #FFFFFF;
-  --border-subtle: hsl(200 100% 25%);
-  --border-muted: hsl(265 100% 24%);
-  --border-strong: hsl(260 100% 37%);
-  --border-stronger: hsl(260 100% 45%);
-  --border-quiet: hsl(185 100% 30%);
-  --border-accent: hsl(185 100% 50%);
-  --border-accent-soft: hsl(260 100% 40%);
+  --border-subtle: #FFAA33;
+  --border-muted: #FFAA33;
+  --border-strong: #FFAA33;
+  --border-stronger: #FFAA33;
+  --border-quiet: #FFAA33;
+  --border-accent: #FFAA33;
+  --border-accent-soft: #FFAA33;
   --text-accent: #FFFFFF;
   --message-link-color: #FFFFFF;
-  --shadow-accent: hsl(260 100% 30% / 35%);
+  --shadow-accent: #200040;
   --status-success: hsl(120 100% 50%);
   --status-warning: hsl(50 100% 50%);
   --status-error: hsl(0 100% 60%);
@@ -74,12 +74,12 @@
 }
 
 :root[data-theme="amoled"] ::selection {
-  background: #4C00A8;
+  background: #200040;
   color: #FFFFFF;
 }
 
 :root[data-theme="amoled"] .primary {
-  background: linear-gradient(135deg, hsl(260 100% 38%), hsl(260 100% 25%));
+  background: linear-gradient(135deg, #200040, #200040);
   color: #FFFFFF;
 }
 
@@ -101,11 +101,11 @@
 }
 
 :root[data-theme="amoled"] :is(.home-latest-card, .home-usage-card) {
-  background: linear-gradient(135deg, hsl(210 100% 14%), hsl(210 100% 6%));
+  background: linear-gradient(135deg, #001C3D, #001C3D);
 }
 
 :root[data-theme="amoled"] .home-usage-card:nth-child(4n + 2) {
-  background: linear-gradient(135deg, hsl(260 100% 16%), hsl(260 100% 7%));
+  background: linear-gradient(135deg, #200040, #200040);
 }
 
 :root[data-theme="amoled"] .home-usage-card:nth-child(4n + 3) {
@@ -117,17 +117,17 @@
 }
 
 :root[data-theme="amoled"] :is(.home-usage-chart-button, .home-usage-model-chip, .home-usage-empty, .worktree-info-code, .diff-view-toggle-button.is-active) {
-  background: hsl(240 100% 10%);
+  background: #001C3D;
 }
 
 :root[data-theme="amoled"] :is(.thread-skeleton, .home-latest-skeleton) {
-  background-image: linear-gradient(110deg, hsl(260 100% 10%) 8%, hsl(260 100% 30%) 18%, hsl(260 100% 10%) 33%);
+  background-image: linear-gradient(110deg, #200040 8%, #200040 18%, #200040 33%);
 }
 
 /* The remote-connection dialogs use their own colors upstream. */
 :root[data-theme="amoled"] :is(.settings-add-remote-card, .settings-delete-remote-card) {
-  background: hsl(245 100% 9%);
-  border-color: hsl(260 100% 35%);
+  background: #001C3D;
+  border-color: #FFAA33; border-width: 1px;
   color: #FFFFFF;
 }
 
@@ -144,14 +144,14 @@
 }
 
 :root[data-theme="amoled"] .settings-add-remote-card .settings-input {
-  background: hsl(230 100% 12%);
-  border-color: hsl(185 100% 35%);
+  background: #001C3D;
+  border-color: #FFAA33; border-width: 1px;
   color: #FFFFFF;
 }
 
 :root[data-theme="amoled"] :is(.settings-add-remote-card, .settings-delete-remote-card) .ghost {
-  background: hsl(260 100% 12%);
-  border-color: hsl(260 100% 40%);
+  background: #200040;
+  border-color: #FFAA33; border-width: 1px;
   color: #FFFFFF;
 }
 
@@ -185,7 +185,7 @@
 }
 
 :root[data-theme="amoled"] :is(.plan-ready-followup-change, .window-caption-control-close:hover, .window-caption-control-close:focus-visible) {
-  background: hsl(260 100% 13%);
+  background: #200040;
   color: #FFFFFF;
 }
 
@@ -203,19 +203,19 @@
 
 :root[data-theme="amoled"] :is(.diff-viewer-status[data-status="A"], .per-file-edit-status[data-status="A"], .diff-icon-added) {
   color: #FFFFFF;
-  border-color: hsl(120 100% 30%);
+  border-color: #FFAA33; border-width: 1px;
   background: hsl(120 100% 8%);
 }
 
 :root[data-theme="amoled"] :is(.diff-viewer-status[data-status="M"], .per-file-edit-status[data-status="R"], .diff-icon-modified) {
   color: #FFFFFF;
-  border-color: hsl(50 100% 30%);
+  border-color: #FFAA33; border-width: 1px;
   background: hsl(50 100% 8%);
 }
 
 :root[data-theme="amoled"] :is(.diff-viewer-status[data-status="D"], .per-file-edit-status[data-status="D"], .diff-icon-deleted) {
   color: #FFFFFF;
-  border-color: hsl(0 100% 35%);
+  border-color: #FFAA33; border-width: 1px;
   background: hsl(0 100% 9%);
 }
 
@@ -230,22 +230,22 @@
 }
 
 :root[data-theme="amoled"] :is(.message.user, .message.assistant) .bubble {
-  box-shadow: inset 0 1px 0 hsl(210 100% 22%);
+  box-shadow: inset 0 1px 0 #FFAA33;
 }
 
 :root[data-theme="amoled"] .thread-row:hover {
-  background: hsl(260 100% 15%);
+  background: #001C3D;
 }
 
 :root[data-theme="amoled"] .thread-status.processing { background: hsl(30 100% 50%); }
 :root[data-theme="amoled"] .thread-status.reviewing { background: hsl(180 100% 50%); }
-:root[data-theme="amoled"] .thread-status.unread { background: hsl(220 100% 60%); }
+:root[data-theme="amoled"] .thread-status.unread { background: #FFDD33; }
 :root[data-theme="amoled"] .thread-status.ready { background: hsl(120 100% 50%); }
 
-:root[data-theme="amoled"] .thread-state-chip.processing { color: hsl(30 100% 75%); background: hsl(30 100% 10%); border-color: hsl(30 100% 35%); }
-:root[data-theme="amoled"] .thread-state-chip.reviewing { color: hsl(180 100% 75%); background: hsl(180 100% 10%); border-color: hsl(180 100% 35%); }
-:root[data-theme="amoled"] .thread-state-chip.unread { color: hsl(220 100% 80%); background: hsl(220 100% 12%); border-color: hsl(220 100% 40%); }
-:root[data-theme="amoled"] .thread-state-chip.ready { color: hsl(120 100% 75%); background: hsl(120 100% 8%); border-color: hsl(120 100% 30%); }
+:root[data-theme="amoled"] .thread-state-chip.processing { color: hsl(30 100% 75%); background: hsl(30 100% 10%); border-color: #FFAA33; border-width: 1px; }
+:root[data-theme="amoled"] .thread-state-chip.reviewing { color: hsl(180 100% 75%); background: hsl(180 100% 10%); border-color: #FFAA33; border-width: 1px; }
+:root[data-theme="amoled"] .thread-state-chip.unread { color: #FFDD33; background: #001C3D; border-color: #FFAA33; border-width: 1px; }
+:root[data-theme="amoled"] .thread-state-chip.ready { color: hsl(120 100% 75%); background: hsl(120 100% 8%); border-color: #FFAA33; border-width: 1px; }
 
 :root[data-theme="amoled"] .working-text {
   background-image: linear-gradient(90deg, hsl(185 100% 45%), hsl(185 100% 85%), hsl(185 100% 45%));
@@ -275,8 +275,12 @@
   color: #FFAAAA !important;
   opacity: 1;
 }
+:root[data-theme="amoled"] .thread-state-chip.unread,
+:root[data-theme="amoled"] .thread-state-chip.unread :where(span, small) {
+  color: #FFDD33 !important;
+}
 :root[data-theme="amoled"] ::selection {
-  background: #4C00A8 !important;
+  background: #200040 !important;
   color: #FFFFFF !important;
 }
 :root[data-theme="amoled"] :is(.is-selected, [aria-selected="true"]),
@@ -284,6 +288,6 @@
   color: #FFFFFF !important;
 }
 :root[data-theme="amoled"] :is(.is-selected, [aria-selected="true"]) {
-  outline: 2px solid #00EAFF;
-  outline-offset: -2px;
+  outline: 1px solid #FFAA33;
+  outline-offset: -1px;
 }

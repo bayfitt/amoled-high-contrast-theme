@@ -29,8 +29,26 @@ class ThemeTests(unittest.TestCase):
         self.assertGreaterEqual(contrast(PALETTE["text_primary"], PALETTE["background"]), 7)
         self.assertGreaterEqual(contrast(PALETTE["selection_text"], PALETTE["selection_background"]), 4.5)
         self.assertEqual(PALETTE["selection_text"], PALETTE["text_primary"])
-        self.assertGreaterEqual(contrast(PALETTE["accent_cyan"], PALETTE["selection_background"]), 3)
-        self.assertGreaterEqual(contrast(PALETTE["accent_cyan"], PALETTE["background"]), 3)
+        self.assertGreaterEqual(contrast(PALETTE["accent_orange"], PALETTE["selection_background"]), 3)
+        self.assertGreaterEqual(contrast(PALETTE["accent_orange"], PALETTE["background"]), 3)
+        for background in (PALETTE["selection_background"], PALETTE["hover_background"]):
+            self.assertLess(luminance(background), 0.02)
+            self.assertIn("00", (background[1:3], background[3:5], background[5:7]))
+            self.assertGreaterEqual(contrast(PALETTE["accent_orange"], background), 3)
+
+    def test_selected_outlines_and_known_css_borders(self):
+        for path in (ROOT / "adapters" / "css" / "amoled-high-contrast.css",
+                     ROOT / "adapters" / "codex-monitor" / "themes.amoled.css"):
+            text = path.read_text(encoding="utf-8")
+            self.assertIn("outline: 1px solid", text)
+            self.assertNotIn(":where(*)::before", text)
+            self.assertNotIn("border-width: 1px !important;", text)
+        css = (ROOT / "adapters" / "codex-monitor" / "themes.amoled.css").read_text(encoding="utf-8")
+        self.assertIn(f'border-color: {PALETTE["accent_orange"]}; border-width: 1px;', css)
+        self.assertIn(f'--border-muted: {PALETTE["accent_orange"]};', css)
+        self.assertIn(f'.thread-state-chip.unread {{ color: {PALETTE["accent_yellow"]}; background: {PALETTE["hover_background"]};', css)
+        self.assertIn(f'.thread-row:hover {{\n  background: {PALETTE["hover_background"]};', css)
+        self.assertNotIn('hsl(220 100% 80%)', css)
 
     def test_flow_themes_are_xml_with_white_selection_text(self):
         for path in (ROOT / "adapters" / "flow-launcher").glob("*.xaml"):
@@ -38,6 +56,11 @@ class ThemeTests(unittest.TestCase):
             ET.fromstring(text)
             self.assertIn(f'Property="SelectionTextBrush" Value="{PALETTE["selection_text"]}"', text)
             self.assertIn(f'Property="SelectionBrush" Value="{PALETTE["selection_background"]}"', text)
+            self.assertIn(f'Property="BorderBrush" Value="{PALETTE["accent_orange"]}"', text)
+            self.assertIn('Property="BorderThickness" Value="1"', text)
+            indicator = re.search(r'x:Key="ItemBulletSelectedStyle".*?</Style>', text, re.DOTALL).group()
+            self.assertIn('Property="Width" Value="1"', indicator)
+            self.assertIn(f'Property="Background" Value="{PALETTE["accent_orange"]}"', indicator)
             self.assertNotIn("{{", text)
 
     def test_full_screen_has_no_intentional_margin(self):

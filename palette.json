@@ -2,14 +2,15 @@
   "name": "AMOLED High Contrast",
   "background": "#000000",
   "text_primary": "#FFFFFF",
-  "selection_background": "#4C00A8",
+  "selection_background": "#200040",
   "selection_text": "#FFFFFF",
   "accent_cyan": "#00EAFF",
-  "accent_purple": "#967CFF",
-  "hover_background": "#003399",
+  "accent_purple": "#200040",
+  "hover_background": "#001C3D",
   "text_secondary": "#FFAAAA",
-  "accent_orange": "#C44800",
+  "accent_orange": "#FFAA33",
   "accent_yellow": "#FFDD33",
   "accent_green": "#70FF9B",
-  "control_purple": "#805DE3"
+  "control_orange": "#CA4B00",
+  "control_orange_hover": "#A63D00"
 }

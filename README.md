@@ -9,11 +9,12 @@ This repository is the source of truth for the palette. It provides adapters for
 | Use | Color | Contrast |
 | --- | --- | --- |
 | Background | `#000000` | — |
-| Text and selected text | `#FFFFFF` | 21:1 against black; 11.21:1 against the selection |
-| Selection background | `#4C00A8` | Dark saturated purple |
-| Selection indicator | `#00EAFF` | Bright cyan against both the black and purple surfaces |
+| Text and selected text | `#FFFFFF` | 21:1 against black; 18.49:1 against the selection |
+| Selection background | `#200040` | Near-black, saturated purple |
+| Hover background | `#001C3D` | Near-black, saturated blue |
+| Borders and selection indicator | `#FFAA33` | Bright orange, 1px where supported |
 
-The palette is in [palette.json](palette.json). Cyan and light purple accents are used for borders, icons, or other decoration. A bright indicator distinguishes a selected row from the black background. The contrast values above use the WCAG relative-luminance formula.
+The palette is in [palette.json](palette.json). Borders and selection indicators are orange, while cyan can appear in links and other decoration. The contrast values above use the WCAG relative-luminance formula. The blue and purple backgrounds are intentionally close to black, so a visible selection indicator is important.
 
 The extended palette also provides a dark saturated blue hover background, light red secondary text, orange hover controls, yellow warnings and green read marks. An app adapter chooses which roles it supports; not every app exposes every role.
 
@@ -46,7 +47,7 @@ To use it in a Codex Monitor source build, back up the existing `src/styles/them
 
 Copy [AMOLED High Contrast.json](adapters/zapfast/AMOLED%20High%20Contrast.json) into the ZapFast themes folder. On Windows this is `%APPDATA%\paolino\zapfast\config\themes`. Run `zapfast reload-themes` while the app is running, then choose **AMOLED High Contrast** in **Settings → Appearance**.
 
-The adapter uses black surfaces, white primary text, light red secondary text, a dark blue hover, dark purple selected rows, cyan outlines and links, yellow warnings, green read marks, and orange on hovered accent controls. White text on orange, and both white and light red text on the blue and purple surfaces, meet 4.5:1 based on the specified colors. Actual rendering, disabled controls and anti-aliased icons still need visual checks. ZapFast's stock selected chat rows do not draw an outline, despite the theme's cyan outline color. Its icons are embedded, single-tint SVGs; the JSON alone cannot turn them into full-color icons.
+The adapter uses black surfaces, white primary text, light red secondary text, a near-black blue hover, near-black purple selected rows, orange outlines and controls, cyan links, yellow warnings and green read marks. White text on the orange controls, and both white and light red text on blue and purple surfaces, meet 4.5:1 based on the specified colors. Actual rendering, disabled controls and anti-aliased icons still need visual checks. ZapFast's stock selected chat rows do not draw an outline, despite the theme's orange outline color; their near-black fill alone has insufficient contrast against black. Its theme format does not set border widths globally and its embedded icons are single-tint SVGs; the JSON alone cannot guarantee 1px borders or create full-color icons.
 
 ## Other applications and web views
 

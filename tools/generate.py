@@ -58,8 +58,58 @@ def codex_monitor_theme():
     text = re.sub(r"(?m)^(\s*--message-link-color:\s*)[^;]+;", lambda m: m.group(1) + cyan + ";", text)
     text = re.sub(r"(?m)^(\s*--surface-active:\s*)[^;]+;", lambda m: m.group(1) + selection + ";", text)
     text = re.sub(r"(?m)^(\s*(?:color|caret-color):\s*)[^;]+;", lambda m: m.group(1) + cyan + ";", text)
-    # Shift the former magenta/violet surfaces to the same royal-purple family.
-    text = re.sub(r"hsl\((?:2[89]\d|3[01]\d)(?=\s)", "hsl(260", text, flags=re.IGNORECASE)
+    # Keep blue and purple backgrounds close to black. Preserve colorful
+    # text/status semantics rather than turning dark colors into foregrounds.
+    def dark_surfaces(match):
+        def darken(color):
+            hue = int(color.group(1)) % 360
+            if 200 <= hue < 270:
+                return PALETTE["hover_background"]
+            if 270 <= hue < 330:
+                return PALETTE["selection_background"]
+            return color.group(0)
+        value = re.sub(r"hsl\((\d+)\s+[^)]*\)", darken, match.group(2), flags=re.IGNORECASE)
+        return match.group(1) + value + ";"
+    text = re.sub(
+        r"(?m)^(\s*(?:--surface-[\w-]+|background(?:-image)?):\s*)([^;]+);",
+        dark_surfaces,
+        text,
+    )
+    # Recolor the stylesheet's own visible borders, without changing
+    # transparent borders or pseudo-elements used for icons and shapes.
+    text = re.sub(
+        r"(?m)^(\s*--border-[\w-]+:\s*)[^;]+;",
+        lambda m: m.group(1) + PALETTE["accent_orange"] + ";",
+        text,
+    )
+    text = re.sub(
+        r"\bborder-color:\s*hsl\([^)]*\);",
+        lambda m: f'border-color: {PALETTE["accent_orange"]}; border-width: 1px;',
+        text,
+        flags=re.IGNORECASE,
+    )
+    # Retain a readable unread marker without a bright-blue indicator.
+    text = text.replace(
+        '.thread-status.unread { background: hsl(220 100% 60%); }',
+        f'.thread-status.unread {{ background: {PALETTE["accent_yellow"]}; }}',
+    )
+    text = text.replace(
+        'color: hsl(220 100% 80%); background: hsl(220 100% 12%);',
+        f'color: {PALETTE["accent_yellow"]}; background: {PALETTE["hover_background"]};',
+    )
+    text = text.replace(
+        'box-shadow: inset 0 1px 0 hsl(210 100% 22%);',
+        f'box-shadow: inset 0 1px 0 {PALETTE["accent_orange"]};',
+    )
+    text = text.replace(
+        f'.thread-row:hover {{\n  background: {PALETTE["selection_background"]};',
+        f'.thread-row:hover {{\n  background: {PALETTE["hover_background"]};',
+    )
+    text = re.sub(
+        r'(?m)^(\s*--shadow-accent:\s*)[^;]+;',
+        lambda m: m.group(1) + PALETTE["selection_background"] + ';',
+        text,
+    )
     pattern = r'(:root\[data-theme="amoled"\] ::selection\s*\{)(.*?)(\})'
     text, count = re.subn(pattern, lambda m: m.group(1) + f"\n  background: {selection};\n  color: {selection_text};\n" + m.group(3), text, count=1, flags=re.DOTALL)
     if count != 1:
@@ -76,6 +126,10 @@ def codex_monitor_theme():
   color: {PALETTE["text_secondary"]} !important;
   opacity: 1;
 }}
+:root[data-theme="amoled"] .thread-state-chip.unread,
+:root[data-theme="amoled"] .thread-state-chip.unread :where(span, small) {{
+  color: {PALETTE["accent_yellow"]} !important;
+}}
 :root[data-theme="amoled"] ::selection {{
   background: {selection} !important;
   color: {selection_text} !important;
@@ -85,8 +139,8 @@ def codex_monitor_theme():
   color: {selection_text} !important;
 }}
 :root[data-theme="amoled"] :is(.is-selected, [aria-selected="true"]) {{
-  outline: 2px solid {PALETTE["accent_cyan"]};
-  outline-offset: -2px;
+  outline: 1px solid {PALETTE["accent_orange"]};
+  outline-offset: -1px;
 }}
 '''
     return text
@@ -122,8 +176,8 @@ def generic_css():
 [data-theme="amoled-high-contrast"] :is(.is-selected, [aria-selected="true"]) {{
   background-color: var(--amoled-selection);
   color: var(--amoled-selection-text);
-  outline: 2px solid var(--amoled-accent-cyan);
-  outline-offset: -2px;
+  outline: 1px solid var(--amoled-accent-orange);
+  outline-offset: -1px;
 }}
 '''
 
@@ -137,12 +191,12 @@ def zapfast_theme():
         "surface": "#101010",
         "surface_hover": p["hover_background"],
         "surface_active": p["selection_background"],
-        "outline": p["accent_cyan"],
+        "outline": p["accent_orange"],
         "text": p["text_primary"],
         "secondary": p["text_secondary"],
         "dim": p["text_secondary"],
-        "accent": p["control_purple"],
-        "accent_hover": p["accent_orange"],
+        "accent": p["control_orange"],
+        "accent_hover": p["control_orange_hover"],
         "on_accent": p["selection_text"],
         "danger": "#FF7070",
         "warning": p["accent_yellow"],

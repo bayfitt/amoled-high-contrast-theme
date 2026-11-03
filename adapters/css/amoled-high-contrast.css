@@ -4,15 +4,15 @@
   --amoled-background: #000000;
   --amoled-text: #FFFFFF;
   --amoled-text-secondary: #FFAAAA;
-  --amoled-selection: #4C00A8;
+  --amoled-selection: #200040;
   --amoled-selection-text: #FFFFFF;
   --amoled-accent-red: #FFAAAA;
-  --amoled-accent-orange: #C44800;
+  --amoled-accent-orange: #FFAA33;
   --amoled-accent-yellow: #FFDD33;
   --amoled-accent-green: #70FF9B;
   --amoled-accent-cyan: #00EAFF;
-  --amoled-accent-blue: #003399;
-  --amoled-accent-purple: #967CFF;
+  --amoled-accent-blue: #001C3D;
+  --amoled-accent-purple: #200040;
   background-color: var(--amoled-background);
   color: var(--amoled-text);
 }
@@ -26,6 +26,6 @@
 [data-theme="amoled-high-contrast"] :is(.is-selected, [aria-selected="true"]) {
   background-color: var(--amoled-selection);
   color: var(--amoled-selection-text);
-  outline: 2px solid var(--amoled-accent-cyan);
-  outline-offset: -2px;
+  outline: 1px solid var(--amoled-accent-orange);
+  outline-offset: -1px;
 }
