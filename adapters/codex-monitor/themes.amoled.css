@@ -11,12 +11,12 @@
   --text-strong: #FFFFFF;
   --text-emphasis: #FFFFFF;
   --text-stronger: #FFFFFF;
-  --text-quiet: #FFAAAA;
-  --text-muted: #FFAAAA;
-  --text-subtle: #FFAAAA;
-  --text-faint: #FFAAAA;
-  --text-fainter: #FFAAAA;
-  --text-dim: #FFAAAA;
+  --text-quiet: #FF9B39;
+  --text-muted: #FF9B39;
+  --text-subtle: #FF9B39;
+  --text-faint: #FF9B39;
+  --text-fainter: #FF9B39;
+  --text-dim: #FF9B39;
   --surface-sidebar: #000000;
   --surface-sidebar-opaque: #000000;
   --surface-topbar: #000000;
@@ -264,7 +264,7 @@
   color: #FFFFFF;
 }
 
-/* Keep primary and selected text white, and quiet text light red.
+/* Keep primary and selected text white, and quiet text warm white.
    Image and emoji icons retain their original colors. */
 :root[data-theme="amoled"] :where(div, p, span, a, button, label, input, textarea, select, option, h1, h2, h3, h4, h5, h6, code, pre, li, td, th, small, strong, em, kbd, time, summary, blockquote) {
   color: #FFFFFF !important;
@@ -272,7 +272,7 @@
 :root[data-theme="amoled"] :is(.home-usage-label, .workspace-summary, .thread-time, .sidebar-usage-reset),
 :root[data-theme="amoled"] :is(.home-usage-label, .workspace-summary, .thread-time, .sidebar-usage-reset) :where(span, small, time),
 :root[data-theme="amoled"] :is(input, textarea)::placeholder {
-  color: #FFAAAA !important;
+  color: #FF9B39 !important;
   opacity: 1;
 }
 :root[data-theme="amoled"] .thread-state-chip.unread,

@@ -83,7 +83,7 @@ class ThemeTests(unittest.TestCase):
             self.assertEqual(value, PALETTE["text_secondary"] if name in quiet else PALETTE["text_primary"])
         self.assertIn(f'color: {PALETTE["text_secondary"]} !important;', css)
 
-    def test_flow_secondary_text_uses_red(self):
+    def test_flow_secondary_text_uses_warm_white(self):
         for path in (ROOT / "adapters" / "flow-launcher").glob("*.xaml"):
             text = path.read_text(encoding="utf-8")
             sub_style = re.search(r'x:Key="ItemSubTitleStyle".*?</Style>', text, re.DOTALL).group()
@@ -96,6 +96,10 @@ class ThemeTests(unittest.TestCase):
         colors = theme["colors"]
         self.assertEqual(theme["base"], "dark")
         self.assertEqual(colors["surface_active"], PALETTE["selection_background"])
+        # ZapFast derives selected glyphs and the translucent highlight from
+        # the same accent. White on a 35% white overlay over black is readable.
+        self.assertEqual(colors["accent"], "#FFFFFF")
+        self.assertGreaterEqual(contrast(colors["accent"], "#595959"), 4.5)
         for background in (colors["window"], colors["surface"], colors["surface_active"], colors["surface_hover"]):
             for foreground in (colors["text"], colors["secondary"], colors["dim"]):
                 self.assertGreaterEqual(contrast(foreground, background), 4.5, (foreground, background))

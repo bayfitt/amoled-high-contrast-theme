@@ -48,7 +48,7 @@ def codex_monitor_theme():
     selection = PALETTE["selection_background"]
     selection_text = PALETTE["selection_text"]
     text = re.sub(r"(?m)^(\s*--text-[\w-]+:\s*)[^;]+;", lambda m: m.group(1) + cyan + ";", text)
-    # Quiet text and placeholders use the requested red; status and syntax
+    # Quiet text and placeholders use warm white; status and syntax
     # colors retain their existing semantic roles.
     text = re.sub(
         r"(?m)^(\s*--text-(?:quiet|muted|subtle|faint|fainter|dim):\s*)[^;]+;",
@@ -115,7 +115,7 @@ def codex_monitor_theme():
     if count != 1:
         raise ValueError("The Codex Monitor selection rule could not be found")
     text += f'''
-/* Keep primary and selected text white, and quiet text light red.
+/* Keep primary and selected text white, and quiet text warm white.
    Image and emoji icons retain their original colors. */
 :root[data-theme="amoled"] :where(div, p, span, a, button, label, input, textarea, select, option, h1, h2, h3, h4, h5, h6, code, pre, li, td, th, small, strong, em, kbd, time, summary, blockquote) {{
   color: {cyan} !important;
@@ -156,7 +156,7 @@ def generic_css():
   --amoled-text-secondary: {p["text_secondary"]};
   --amoled-selection: {p["selection_background"]};
   --amoled-selection-text: {p["selection_text"]};
-  --amoled-accent-red: {p["text_secondary"]};
+  --amoled-accent-red: {p["accent_red"]};
   --amoled-accent-orange: {p["accent_orange"]};
   --amoled-accent-yellow: {p["accent_yellow"]};
   --amoled-accent-green: {p["accent_green"]};
@@ -195,10 +195,13 @@ def zapfast_theme():
         "text": p["text_primary"],
         "secondary": p["text_secondary"],
         "dim": p["text_secondary"],
-        "accent": p["control_orange"],
-        "accent_hover": p["control_orange_hover"],
-        "on_accent": p["selection_text"],
-        "danger": "#FF7070",
+        # ZapFast uses accent for selected glyphs as well as filled controls.
+        # White glyphs stay visible on the translucent selection highlight;
+        # black control labels stay legible on the white/orange fills.
+        "accent": p["text_primary"],
+        "accent_hover": p["accent_orange"],
+        "on_accent": p["background"],
+        "danger": p["accent_red"],
         "warning": p["accent_yellow"],
         "overlay": p["background"],
         "shadow": p["background"],
