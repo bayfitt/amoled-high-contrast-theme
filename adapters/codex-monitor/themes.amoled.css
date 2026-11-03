@@ -11,12 +11,12 @@
   --text-strong: #FFFFFF;
   --text-emphasis: #FFFFFF;
   --text-stronger: #FFFFFF;
-  --text-quiet: #FF9B39;
-  --text-muted: #FF9B39;
-  --text-subtle: #FF9B39;
-  --text-faint: #FF9B39;
-  --text-fainter: #FF9B39;
-  --text-dim: #FF9B39;
+  --text-quiet: #FFB061;
+  --text-muted: #FFB061;
+  --text-subtle: #FFB061;
+  --text-faint: #FFB061;
+  --text-fainter: #FFB061;
+  --text-dim: #FFB061;
   --surface-sidebar: #000000;
   --surface-sidebar-opaque: #000000;
   --surface-topbar: #000000;
@@ -272,7 +272,7 @@
 :root[data-theme="amoled"] :is(.home-usage-label, .workspace-summary, .thread-time, .sidebar-usage-reset),
 :root[data-theme="amoled"] :is(.home-usage-label, .workspace-summary, .thread-time, .sidebar-usage-reset) :where(span, small, time),
 :root[data-theme="amoled"] :is(input, textarea)::placeholder {
-  color: #FF9B39 !important;
+  color: #FFB061 !important;
   opacity: 1;
 }
 :root[data-theme="amoled"] .thread-state-chip.unread,
