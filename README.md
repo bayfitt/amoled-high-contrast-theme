@@ -16,7 +16,7 @@ This repository is the source of truth for the palette. It provides adapters for
 
 The palette is in [palette.json](palette.json). Borders and selection indicators are orange, while cyan can appear in links and other decoration. The contrast values above use the WCAG relative-luminance formula. The blue and purple backgrounds are intentionally close to black, so a visible selection indicator is important.
 
-The extended palette also provides a dark saturated blue hover background, pale warm-white secondary text (`#FFF0DC`), orange hover controls, yellow warnings and green read marks. The text color is chosen for the soft appearance of incandescent lighting around 2700–2800 K; it is not a literal 2800 K blackbody chromaticity. Appearance depends on the display. An app adapter chooses which roles it supports; not every app exposes every role.
+The extended palette also provides a dark saturated blue hover background, golden-yellow secondary text (`#FFCD42`), orange hover controls, yellow warnings and green read marks. Its appearance depends on the display. An app adapter chooses which roles it supports; not every app exposes every role.
 
 Open [preview.html](preview.html) locally to try the colors and select some text.
 
@@ -39,7 +39,7 @@ The full-screen variant reads the primary Windows work-area height when the them
 
 ## Codex Monitor
 
-[themes.amoled.css](adapters/codex-monitor/themes.amoled.css) adapts the user's existing AMOLED design: black surfaces and colorful accents remain, primary and selected text are white, secondary text is warm white, and selections use dark purple.
+[themes.amoled.css](adapters/codex-monitor/themes.amoled.css) adapts the user's existing AMOLED design: black surfaces and colorful accents remain, primary and selected text are white, secondary text is golden yellow, and selections use dark purple.
 
 To use it in a Codex Monitor source build, back up the existing `src/styles/themes.amoled.css`, replace it with the adapter, and build the application using that checkout's normal instructions. Select **AMOLED** in Codex Monitor's appearance settings. The CSS is embedded in a compiled application, so replacing this repository file alone will not change an already installed build. See [Windows on ARM64](docs/windows-arm64.md) for architecture notes.
 
@@ -47,7 +47,7 @@ To use it in a Codex Monitor source build, back up the existing `src/styles/them
 
 Copy [AMOLED High Contrast.json](adapters/zapfast/AMOLED%20High%20Contrast.json) into the ZapFast themes folder. On Windows this is `%APPDATA%\paolino\zapfast\config\themes`. Run `zapfast reload-themes` while the app is running, then choose **AMOLED High Contrast** in **Settings → Appearance**.
 
-The adapter uses black surfaces, white primary text, pale incandescent-inspired warm-white secondary text, a near-black blue hover, near-black purple selected rows, orange outlines, cyan links, yellow warnings and green read marks. ZapFast uses its accent for both selected text and filled controls: to keep selected text white, its accent is white, with black control labels and orange hover. Actual rendering, disabled controls and anti-aliased icons still need visual checks. ZapFast's stock selected chat rows do not draw an outline, despite the theme's orange outline color; their near-black fill alone has insufficient contrast against black. Its theme format does not set border widths globally and its embedded icons are single-tint SVGs; the JSON alone cannot guarantee 1px borders or create full-color icons.
+The adapter uses black surfaces, white primary text, golden-yellow secondary text, a near-black blue hover, near-black purple selected rows, orange outlines, cyan links, yellow warnings and green read marks. ZapFast uses its accent for both selected text and filled controls: to keep selected text white, its accent is white, with black control labels and orange hover. Actual rendering, disabled controls and anti-aliased icons still need visual checks. ZapFast's stock selected chat rows do not draw an outline, despite the theme's orange outline color; their near-black fill alone has insufficient contrast against black. Its theme format does not set border widths globally and its embedded icons are single-tint SVGs; the JSON alone cannot guarantee 1px borders or create full-color icons.
 
 For a solid-black chat background, use the **Theme** wallpaper and disable the doodle wallpaper in ZapFast's settings. The app's built-in **Black** wallpaper is not pure black. This is an app setting, not part of the theme JSON.
 

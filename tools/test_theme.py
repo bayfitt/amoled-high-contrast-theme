@@ -83,7 +83,7 @@ class ThemeTests(unittest.TestCase):
             self.assertEqual(value, PALETTE["text_secondary"] if name in quiet else PALETTE["text_primary"])
         self.assertIn(f'color: {PALETTE["text_secondary"]} !important;', css)
 
-    def test_flow_secondary_text_uses_warm_white(self):
+    def test_flow_secondary_text_uses_palette_color(self):
         for path in (ROOT / "adapters" / "flow-launcher").glob("*.xaml"):
             text = path.read_text(encoding="utf-8")
             sub_style = re.search(r'x:Key="ItemSubTitleStyle".*?</Style>', text, re.DOTALL).group()
