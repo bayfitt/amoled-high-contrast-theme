@@ -1,6 +1,6 @@
 # AMOLED High Contrast
 
-A reusable high-contrast theme with a pure-black background, white text, and a dark royal-purple selection. White text stays white when selected. Colorful image and emoji icons can keep their colors.
+A reusable high-contrast theme with a pure-black background, white text, and a deeply saturated purple selection. White text stays white when selected. Colorful image and emoji icons can keep their colors.
 
 This repository is the source of truth for the palette. It provides adapters for specific applications; applications must support custom themes or include an adapter in their build. A Windows theme cannot force every application to use the same colors.
 
@@ -9,11 +9,13 @@ This repository is the source of truth for the palette. It provides adapters for
 | Use | Color | Contrast |
 | --- | --- | --- |
 | Background | `#000000` | — |
-| Text and selected text | `#FFFFFF` | 21:1 against black; 9.17:1 against the selection |
-| Selection background | `#512DA8` | Dark royal purple |
+| Text and selected text | `#FFFFFF` | 21:1 against black; 11.21:1 against the selection |
+| Selection background | `#4C00A8` | Dark saturated purple |
 | Selection indicator | `#00EAFF` | Bright cyan against both the black and purple surfaces |
 
 The palette is in [palette.json](palette.json). Cyan and light purple accents are used for borders, icons, or other decoration. A bright indicator distinguishes a selected row from the black background. The contrast values above use the WCAG relative-luminance formula.
+
+The extended palette also provides a dark saturated blue hover background, light red secondary text, orange hover controls, yellow warnings and green read marks. An app adapter chooses which roles it supports; not every app exposes every role.
 
 Open [preview.html](preview.html) locally to try the colors and select some text.
 
@@ -36,9 +38,15 @@ The full-screen variant reads the primary Windows work-area height when the them
 
 ## Codex Monitor
 
-[themes.amoled.css](adapters/codex-monitor/themes.amoled.css) adapts the user's existing AMOLED design: black surfaces and colorful accents remain, while normal and selected text are white and selections use royal purple.
+[themes.amoled.css](adapters/codex-monitor/themes.amoled.css) adapts the user's existing AMOLED design: black surfaces and colorful accents remain, primary and selected text are white, secondary text is light red, and selections use dark purple.
 
 To use it in a Codex Monitor source build, back up the existing `src/styles/themes.amoled.css`, replace it with the adapter, and build the application using that checkout's normal instructions. Select **AMOLED** in Codex Monitor's appearance settings. The CSS is embedded in a compiled application, so replacing this repository file alone will not change an already installed build. See [Windows on ARM64](docs/windows-arm64.md) for architecture notes.
+
+## ZapFast
+
+Copy [AMOLED High Contrast.json](adapters/zapfast/AMOLED%20High%20Contrast.json) into the ZapFast themes folder. On Windows this is `%APPDATA%\paolino\zapfast\config\themes`. Run `zapfast reload-themes` while the app is running, then choose **AMOLED High Contrast** in **Settings → Appearance**.
+
+The adapter uses black surfaces, white primary text, light red secondary text, a dark blue hover, dark purple selected rows, cyan outlines and links, yellow warnings, green read marks, and orange on hovered accent controls. White text on orange, and both white and light red text on the blue and purple surfaces, meet 4.5:1 based on the specified colors. Actual rendering, disabled controls and anti-aliased icons still need visual checks. ZapFast's stock selected chat rows do not draw an outline, despite the theme's cyan outline color. Its icons are embedded, single-tint SVGs; the JSON alone cannot turn them into full-color icons.
 
 ## Other applications and web views
 

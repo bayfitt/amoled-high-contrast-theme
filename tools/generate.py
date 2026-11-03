@@ -48,6 +48,13 @@ def codex_monitor_theme():
     selection = PALETTE["selection_background"]
     selection_text = PALETTE["selection_text"]
     text = re.sub(r"(?m)^(\s*--text-[\w-]+:\s*)[^;]+;", lambda m: m.group(1) + cyan + ";", text)
+    # Quiet text and placeholders use the requested red; status and syntax
+    # colors retain their existing semantic roles.
+    text = re.sub(
+        r"(?m)^(\s*--text-(?:quiet|muted|subtle|faint|fainter|dim):\s*)[^;]+;",
+        lambda m: m.group(1) + PALETTE["text_secondary"] + ";",
+        text,
+    )
     text = re.sub(r"(?m)^(\s*--message-link-color:\s*)[^;]+;", lambda m: m.group(1) + cyan + ";", text)
     text = re.sub(r"(?m)^(\s*--surface-active:\s*)[^;]+;", lambda m: m.group(1) + selection + ";", text)
     text = re.sub(r"(?m)^(\s*(?:color|caret-color):\s*)[^;]+;", lambda m: m.group(1) + cyan + ";", text)
@@ -58,10 +65,16 @@ def codex_monitor_theme():
     if count != 1:
         raise ValueError("The Codex Monitor selection rule could not be found")
     text += f'''
-/* Keep ordinary and selected text white.
+/* Keep primary and selected text white, and quiet text light red.
    Image and emoji icons retain their original colors. */
 :root[data-theme="amoled"] :where(div, p, span, a, button, label, input, textarea, select, option, h1, h2, h3, h4, h5, h6, code, pre, li, td, th, small, strong, em, kbd, time, summary, blockquote) {{
   color: {cyan} !important;
+}}
+:root[data-theme="amoled"] :is(.home-usage-label, .workspace-summary, .thread-time, .sidebar-usage-reset),
+:root[data-theme="amoled"] :is(.home-usage-label, .workspace-summary, .thread-time, .sidebar-usage-reset) :where(span, small, time),
+:root[data-theme="amoled"] :is(input, textarea)::placeholder {{
+  color: {PALETTE["text_secondary"]} !important;
+  opacity: 1;
 }}
 :root[data-theme="amoled"] ::selection {{
   background: {selection} !important;
@@ -86,9 +99,15 @@ def generic_css():
   color-scheme: dark;
   --amoled-background: {p["background"]};
   --amoled-text: {p["text_primary"]};
+  --amoled-text-secondary: {p["text_secondary"]};
   --amoled-selection: {p["selection_background"]};
   --amoled-selection-text: {p["selection_text"]};
+  --amoled-accent-red: {p["text_secondary"]};
+  --amoled-accent-orange: {p["accent_orange"]};
+  --amoled-accent-yellow: {p["accent_yellow"]};
+  --amoled-accent-green: {p["accent_green"]};
   --amoled-accent-cyan: {p["accent_cyan"]};
+  --amoled-accent-blue: {p["hover_background"]};
   --amoled-accent-purple: {p["accent_purple"]};
   background-color: var(--amoled-background);
   color: var(--amoled-text);
@@ -96,6 +115,9 @@ def generic_css():
 [data-theme="amoled-high-contrast"] ::selection {{
   background: var(--amoled-selection);
   color: var(--amoled-selection-text);
+}}
+[data-theme="amoled-high-contrast"] :is(.amoled-secondary, [data-amoled-secondary]) {{
+  color: var(--amoled-text-secondary);
 }}
 [data-theme="amoled-high-contrast"] :is(.is-selected, [aria-selected="true"]) {{
   background-color: var(--amoled-selection);
@@ -106,12 +128,42 @@ def generic_css():
 '''
 
 
+def zapfast_theme():
+    """Map the shared spectrum to ZapFast's supported palette roles."""
+    p = PALETTE
+    colors = {
+        "window": p["background"],
+        "panel": p["background"],
+        "surface": "#101010",
+        "surface_hover": p["hover_background"],
+        "surface_active": p["selection_background"],
+        "outline": p["accent_cyan"],
+        "text": p["text_primary"],
+        "secondary": p["text_secondary"],
+        "dim": p["text_secondary"],
+        "accent": p["control_purple"],
+        "accent_hover": p["accent_orange"],
+        "on_accent": p["selection_text"],
+        "danger": "#FF7070",
+        "warning": p["accent_yellow"],
+        "overlay": p["background"],
+        "shadow": p["background"],
+        "chat": p["background"],
+        "bubble_in": "#101010",
+        "bubble_out": p["selection_background"],
+        "link": p["accent_cyan"],
+        "read": p["accent_green"],
+    }
+    return json.dumps({"base": "dark", "colors": colors}, indent=2) + "\n"
+
+
 def generated():
     return {
         "adapters/flow-launcher/AMOLED-HighContrast.xaml": flow_theme(False),
         "adapters/flow-launcher/AMOLED-HighContrast-FullScreen.xaml": flow_theme(True),
         "adapters/codex-monitor/themes.amoled.css": codex_monitor_theme(),
         "adapters/css/amoled-high-contrast.css": generic_css(),
+        "adapters/zapfast/AMOLED High Contrast.json": zapfast_theme(),
     }
 
 

@@ -85,7 +85,7 @@
         x:Key="ItemSubTitleStyle"
         BasedOn="{StaticResource BaseItemSubTitleStyle}"
         TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="{{text_primary}}" />
+        <Setter Property="Foreground" Value="{{text_secondary}}" />
     </Style>
     <Style
         x:Key="SeparatorStyle"

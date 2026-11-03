@@ -38,7 +38,7 @@
         <Setter Property="FontSize" Value="18" />
         <Setter Property="Height" Value="38" />
             <Setter Property="CaretBrush" Value="#FFFFFF" />
-            <Setter Property="SelectionBrush" Value="#512DA8" />
+            <Setter Property="SelectionBrush" Value="#4C00A8" />
             <Setter Property="SelectionTextBrush" Value="#FFFFFF" />
             <Setter Property="SelectionOpacity" Value="1" />
     </Style>
@@ -92,7 +92,7 @@
         x:Key="ItemSubTitleStyle"
         BasedOn="{StaticResource BaseItemSubTitleStyle}"
         TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="#FFFFFF" />
+        <Setter Property="Foreground" Value="#FFAAAA" />
     </Style>
     <Style
         x:Key="SeparatorStyle"
@@ -115,7 +115,7 @@
         TargetType="{x:Type TextBlock}">
         <Setter Property="Foreground" Value="#FFFFFF" />
     </Style>
-    <SolidColorBrush x:Key="ItemSelectedBackgroundColor">#512DA8</SolidColorBrush>
+    <SolidColorBrush x:Key="ItemSelectedBackgroundColor">#4C00A8</SolidColorBrush>
 
     <!--  button style in the middle of the scrollbar  -->
     <Style

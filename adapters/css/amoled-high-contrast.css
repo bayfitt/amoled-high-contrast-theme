@@ -3,9 +3,15 @@
   color-scheme: dark;
   --amoled-background: #000000;
   --amoled-text: #FFFFFF;
-  --amoled-selection: #512DA8;
+  --amoled-text-secondary: #FFAAAA;
+  --amoled-selection: #4C00A8;
   --amoled-selection-text: #FFFFFF;
+  --amoled-accent-red: #FFAAAA;
+  --amoled-accent-orange: #C44800;
+  --amoled-accent-yellow: #FFDD33;
+  --amoled-accent-green: #70FF9B;
   --amoled-accent-cyan: #00EAFF;
+  --amoled-accent-blue: #003399;
   --amoled-accent-purple: #967CFF;
   background-color: var(--amoled-background);
   color: var(--amoled-text);
@@ -13,6 +19,9 @@
 [data-theme="amoled-high-contrast"] ::selection {
   background: var(--amoled-selection);
   color: var(--amoled-selection-text);
+}
+[data-theme="amoled-high-contrast"] :is(.amoled-secondary, [data-amoled-secondary]) {
+  color: var(--amoled-text-secondary);
 }
 [data-theme="amoled-high-contrast"] :is(.is-selected, [aria-selected="true"]) {
   background-color: var(--amoled-selection);

@@ -11,12 +11,12 @@
   --text-strong: #FFFFFF;
   --text-emphasis: #FFFFFF;
   --text-stronger: #FFFFFF;
-  --text-quiet: #FFFFFF;
-  --text-muted: #FFFFFF;
-  --text-subtle: #FFFFFF;
-  --text-faint: #FFFFFF;
-  --text-fainter: #FFFFFF;
-  --text-dim: #FFFFFF;
+  --text-quiet: #FFAAAA;
+  --text-muted: #FFAAAA;
+  --text-subtle: #FFAAAA;
+  --text-faint: #FFAAAA;
+  --text-fainter: #FFAAAA;
+  --text-dim: #FFAAAA;
   --surface-sidebar: #000000;
   --surface-sidebar-opaque: #000000;
   --surface-topbar: #000000;
@@ -31,7 +31,7 @@
   --surface-control-hover: hsl(265 100% 21%);
   --surface-control-disabled: hsl(220 100% 9%);
   --surface-hover: hsl(195 100% 11%);
-  --surface-active: #512DA8;
+  --surface-active: #4C00A8;
   --surface-approval: hsl(55 100% 9%);
   --surface-debug: hsl(240 100% 7%);
   --surface-command: hsl(220 100% 8%);
@@ -74,7 +74,7 @@
 }
 
 :root[data-theme="amoled"] ::selection {
-  background: #512DA8;
+  background: #4C00A8;
   color: #FFFFFF;
 }
 
@@ -264,13 +264,19 @@
   color: #FFFFFF;
 }
 
-/* Keep ordinary and selected text white.
+/* Keep primary and selected text white, and quiet text light red.
    Image and emoji icons retain their original colors. */
 :root[data-theme="amoled"] :where(div, p, span, a, button, label, input, textarea, select, option, h1, h2, h3, h4, h5, h6, code, pre, li, td, th, small, strong, em, kbd, time, summary, blockquote) {
   color: #FFFFFF !important;
 }
+:root[data-theme="amoled"] :is(.home-usage-label, .workspace-summary, .thread-time, .sidebar-usage-reset),
+:root[data-theme="amoled"] :is(.home-usage-label, .workspace-summary, .thread-time, .sidebar-usage-reset) :where(span, small, time),
+:root[data-theme="amoled"] :is(input, textarea)::placeholder {
+  color: #FFAAAA !important;
+  opacity: 1;
+}
 :root[data-theme="amoled"] ::selection {
-  background: #512DA8 !important;
+  background: #4C00A8 !important;
   color: #FFFFFF !important;
 }
 :root[data-theme="amoled"] :is(.is-selected, [aria-selected="true"]),

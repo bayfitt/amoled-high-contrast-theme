@@ -55,8 +55,33 @@ class ThemeTests(unittest.TestCase):
         css = (ROOT / "adapters" / "codex-monitor" / "themes.amoled.css").read_text(encoding="utf-8")
         self.assertIn(f'background: {PALETTE["selection_background"]} !important;', css)
         self.assertIn(f'color: {PALETTE["selection_text"]} !important;', css)
-        for value in re.findall(r"(?m)^\s*--text-[\w-]+:\s*([^;]+);", css):
-            self.assertEqual(value, PALETTE["text_primary"])
+        quiet = {"quiet", "muted", "subtle", "faint", "fainter", "dim"}
+        for name, value in re.findall(r"(?m)^\s*--text-([\w-]+):\s*([^;]+);", css):
+            self.assertEqual(value, PALETTE["text_secondary"] if name in quiet else PALETTE["text_primary"])
+        self.assertIn(f'color: {PALETTE["text_secondary"]} !important;', css)
+
+    def test_flow_secondary_text_uses_red(self):
+        for path in (ROOT / "adapters" / "flow-launcher").glob("*.xaml"):
+            text = path.read_text(encoding="utf-8")
+            sub_style = re.search(r'x:Key="ItemSubTitleStyle".*?</Style>', text, re.DOTALL).group()
+            self.assertIn(f'Property="Foreground" Value="{PALETTE["text_secondary"]}"', sub_style)
+            selected = re.search(r'x:Key="ItemSubTitleSelectedStyle".*?</Style>', text, re.DOTALL).group()
+            self.assertIn(f'Property="Foreground" Value="{PALETTE["selection_text"]}"', selected)
+
+    def test_zapfast_semantic_contrasts(self):
+        theme = json.loads((ROOT / "adapters" / "zapfast" / "AMOLED High Contrast.json").read_text(encoding="utf-8"))
+        colors = theme["colors"]
+        self.assertEqual(theme["base"], "dark")
+        self.assertEqual(colors["surface_active"], PALETTE["selection_background"])
+        for background in (colors["window"], colors["surface"], colors["surface_active"], colors["surface_hover"]):
+            for foreground in (colors["text"], colors["secondary"], colors["dim"]):
+                self.assertGreaterEqual(contrast(foreground, background), 4.5, (foreground, background))
+            self.assertGreaterEqual(contrast(colors["outline"], background), 3, (colors["outline"], background))
+        for background in (colors["accent"], colors["accent_hover"]):
+            self.assertGreaterEqual(contrast(colors["on_accent"], background), 4.5)
+        for foreground in (colors["warning"], colors["read"], colors["link"]):
+            for background in (colors["window"], colors["surface_active"], colors["surface_hover"]):
+                self.assertGreaterEqual(contrast(foreground, background), 3)
 
     def test_generated_files_match_palette(self):
         subprocess.run([sys.executable, str(ROOT / "tools" / "generate.py"), "--check"], check=True)
